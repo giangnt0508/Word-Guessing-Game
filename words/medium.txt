@@ -1,0 +1,10 @@
+COMPUTER|An electronic device for processing data
+LIBRARY|A place where books are kept
+MOUNTAIN|A large natural elevation of the earth's surface
+OCEAN|A vast body of salt water
+PENGUIN|A flightless bird that lives in cold regions
+RAINBOW|A colorful arc in the sky after rain
+SUNFLOWER|A tall plant with large yellow flowers
+TROPICAL|Relating to the region near the equator
+VOLCANO|A mountain that erupts with lava
+WATERFALL|A cascade of water falling from a height

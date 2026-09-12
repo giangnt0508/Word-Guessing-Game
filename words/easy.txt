@@ -1,0 +1,10 @@
+APPLE|A common red or green fruit
+BANANA|A yellow curved fruit
+CAT|A small furry animal that says meow
+DOG|A loyal animal that says woof
+FISH|An animal that lives in water
+HOUSE|A building where people live
+MOON|The earth's natural satellite
+STAR|A bright object in the night sky
+TREE|A tall plant with a trunk
+BOOK|A set of written pages bound together

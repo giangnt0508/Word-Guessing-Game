@@ -1,0 +1,9 @@
+Report_Ass3_Truong Giang Nguyen_202572186.docx
+*.docx
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
