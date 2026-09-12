@@ -28,7 +28,18 @@ class CLIApp:
         print("========================================================")
         print()
         
-
+    def print_game_state(self):
+        """Print the current game state."""
+        state = self.engine.get_game_state()
+        
+        print(f"Difficulty: {state['difficulty'].upper()}")
+        print(f"Word: {state['display_word']}")
+        print(f"Hint: {state['hint']}")
+        print(f"Lives Remaining: {'❤️' * state['remaining_lives']} ({state['remaining_lives']})")
+        print(f"Score: {state['score']}")
+        print(f"Guessed Letters: {', '.join(sorted(state['guessed_letters'])) if state['guessed_letters'] else 'None'}")
+        print("----------------------------------------------------------")
+        
     def select_difficulty(self) -> str:
         """ Let the user select a difficulty level. """
         while True:
@@ -61,11 +72,50 @@ class CLIApp:
             # Select difficulty
             difficulty = self.select_difficulty()
 
+            # Load word
+            if not self.engine.load_word_from_file(difficulty):
+                self.clear_screen()
+                print("========================================================")
+                print("ERROR: Could not load word file.")
+                print(f"Please ensure 'words/{difficulty}.txt' exists and is properly formatted.")
+                print("========================================================")
+                input("\nPress Enter to try again...")
+                continue
+
+            # Game loop
+            while not self.engine.game_over:
+                self.clear_screen()
+                self.print_header()
+                self.print_game_state()
+                
+                # Get user guess
+                guess = input("\nEnter a letter (or 'quit' to exit): ").strip()
+                
+                if guess.lower() == 'quit':
+                    print("\nThanks for playing!")
+                    return
+                    
+                # Process guess
+                is_valid, message = self.engine.validate_guess(guess)
+                print(f"\n{message}")
+                
+                if is_valid:
+                    input("\nPress Enter to continue...")
+            
             # Game ended - show results
             self.clear_screen()
             self.print_header()
             self.print_game_state()
-
+            
+            state = self.engine.get_game_state()
+            if state['game_won']:
+                print("\n🎉 CONGRATULATIONS! YOU WON! 🎉")
+            else:
+                print("\n💔 GAME OVER! Better luck next time! 💔")
+            
+            print(f"\nThe word was: {state['secret_word']}")
+            print(f"Final Score: {state['score']}")
+            
             # Save history
             self.save_game_history()
             
@@ -79,8 +129,15 @@ class CLIApp:
     def save_game_history(self):
         """Save game results to history file."""
         try:
+            state = self.engine.get_game_state()
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
+            
+            # Format: timestamp|difficulty|word|result|score|guesses
+            record = f"{timestamp}|{state['difficulty']}|{state['secret_word']}|{'WON' if state['game_won'] else 'LOST'}|{state['score']}|{len(state['guessed_letters'])}\n"
+            
+            with open(self.history_file, 'a', encoding='utf-8') as file:
+                file.write(record)
+                
         except IOError:
             print("Warning: Could not save game history.")
             
