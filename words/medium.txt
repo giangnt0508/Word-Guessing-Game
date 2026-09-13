@@ -1,10 +1,20 @@
-COMPUTER|An electronic device for processing data
-LIBRARY|A place where books are kept
-MOUNTAIN|A large natural elevation of the earth's surface
-OCEAN|A vast body of salt water
-PENGUIN|A flightless bird that lives in cold regions
-RAINBOW|A colorful arc in the sky after rain
-SUNFLOWER|A tall plant with large yellow flowers
-TROPICAL|Relating to the region near the equator
-VOLCANO|A mountain that erupts with lava
-WATERFALL|A cascade of water falling from a height
+BUTTERFLY|An insect with colourful wings
+ELEPHANT|A very large animal with a trunk
+GUITAR|A musical instrument with strings
+MOUNTAIN|A very high area of land
+AIRPORT|A place where planes arrive and leave
+RESTAURANT|A place where people go to eat
+HOSPITAL|A place where sick people receive treatment
+UMBRELLA|Something used to protect you from rain
+SUITCASE|A bag used when travelling
+BICYCLE|A vehicle with two wheels
+SANDWICH|Food made with ingredients between slices of bread
+TEACHER|A person who helps students learn
+DOCTOR|A person who treats sick people
+KITCHEN|A room where food is prepared
+BEDROOM|A room where people sleep
+GARDENER|A person who looks after plants
+CAMERA|A device used to take photographs
+SUNGLASSES|Something worn to protect the eyes from sunlight
+BREAKFAST|The first meal of the day
+HOLIDAY|A period when people take time away from work or school

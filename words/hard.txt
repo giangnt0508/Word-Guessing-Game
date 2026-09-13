@@ -1,10 +1,20 @@
-AMBIDEXTROUS|Able to use both hands equally well
-BOTANICAL|Relating to the study of plants
-CATASTROPHE|A sudden disaster or misfortune
-DICHOTOMY|A division into two distinct parts
-ENTREPRENEUR|A person who starts a business
-EXTRAORDINARY|Very unusual or remarkable
-IDIOSYNCRASY|A unique personal characteristic
-PHOTOSYNTHESIS|Process by which plants make food
-QUINTESSENTIAL|Representing the perfect example
-UNPRECEDENTED|Never done or known before
+ADVENTURE|An exciting or unusual experience
+CELEBRATION|A special event for an important occasion
+RESTAURANT|A place where people can eat prepared meals
+PHOTOGRAPHY|The activity of taking pictures
+TELESCOPIC|Related to seeing distant objects using a telescope
+ARCHAEOLOGY|The study of ancient human history through remains
+ENVIRONMENT|The natural world around us
+TRANSPORTATION|The movement of people or goods from one place to another
+CONVERSATION|An informal talk between two or more people
+TEMPERATURE|A measurement showing how hot or cold something is
+VOCABULARY|The collection of words known or used by a person
+EXPERIENCE|Something that happens to a person during their life
+DIRECTION|The course or path something follows
+COMMUNICATION|The exchange of information between people
+TRADITION|A custom passed from one generation to another
+INGREDIENT|One of the foods used to prepare a dish
+NEIGHBOURHOOD|An area where people live near one another
+PERSONALITY|The qualities that make a person different from others
+OPPORTUNITY|A favourable chance to do something
+RESPONSIBILITY|A duty or task that someone is expected to handle

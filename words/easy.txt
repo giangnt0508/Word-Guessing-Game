@@ -1,10 +1,20 @@
-APPLE|A common red or green fruit
-BANANA|A yellow curved fruit
-CAT|A small furry animal that says meow
-DOG|A loyal animal that says woof
+APPLE|A red or green fruit
+BANANA|A long yellow fruit
+DOG|A common pet that barks
+CAT|A small animal often kept as a pet
+HOUSE|A place where people live
+CHAIR|Something you sit on
+TABLE|Furniture with a flat surface
+SCHOOL|A place where children learn
+CAR|A vehicle with four wheels
+BOOK|Something you read
+SUN|The bright object seen in the daytime sky
+MOON|The bright object seen at night
+RAIN|Water that falls from clouds
+FLOWER|A colourful part of a plant
+BREAD|A food commonly made from flour
+MILK|A white drink from cows
 FISH|An animal that lives in water
-HOUSE|A building where people live
-MOON|The earth's natural satellite
-STAR|A bright object in the night sky
-TREE|A tall plant with a trunk
-BOOK|A set of written pages bound together
+BIRD|An animal with feathers and wings
+HORSE|A large animal that people can ride
+BEACH|A sandy place next to the sea
