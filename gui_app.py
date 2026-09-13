@@ -361,7 +361,10 @@ class WordGuessingGameGUI:
         
         # Update lives
         for index, life_label in enumerate(self.lives_labels):
-            color = '#e74c3c' if index < state['remaining_lives'] else '#2c3e50'
+            if index < state['remaining_lives']:
+                color = '#e74c3c'
+            else:
+                color = '#2c3e50'
             life_label.config(fg=color)
         
         # Update score
@@ -393,10 +396,10 @@ class WordGuessingGameGUI:
         
         # Show result
         if state['game_won']:
-            self.set_message(f"🎉 YOU WON! The word was '{state['secret_word']}'", '#27ae60')
+            self.set_message(f"YOU WON! The word was '{state['secret_word']}'", '#27ae60')
             self.message_label.config(font=('Arial', 12, 'bold'))
         else:
-            self.set_message(f"💔 GAME OVER! The word was '{state['secret_word']}'", '#e74c3c')
+            self.set_message(f"GAME OVER! The word was '{state['secret_word']}'", '#e74c3c')
             self.message_label.config(font=('Arial', 12, 'bold'))
             
     def save_game_history(self):
