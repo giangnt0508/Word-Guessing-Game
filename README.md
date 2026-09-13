@@ -1,59 +1,59 @@
 # Word Guessing Game
 
-Ứng dụng đoán từ được xây dựng bằng Python, gồm giao diện đồ họa (GUI) và giao diện dòng lệnh (CLI). Người chơi chọn độ khó, đoán từng chữ cái và cố gắng tìm ra từ bí mật trước khi hết lượt.
+A word guessing game built with Python, including both a graphical user interface (GUI) and a command-line interface (CLI). Players select a difficulty level, guess individual letters, and try to find the secret word before running out of lives.
 
-## Tính năng
+## Features
 
-- Ba mức độ: Easy, Medium và Hard.
-- Giao diện GUI bằng Tkinter.
-- Có thể đoán bằng cách click các nút chữ hoặc dùng bàn phím thật.
-- Hiển thị gợi ý, số mạng, điểm số và các chữ cái đã đoán.
-- Trái tim thể hiện số mạng còn lại.
-- Lưu lịch sử các ván chơi vào `game_history.txt`.
-- Có phiên bản chạy trên terminal bằng CLI.
+- Three difficulty levels: Easy, Medium, and Hard.
+- A GUI built with Tkinter.
+- Guess letters by clicking the on-screen buttons or using the physical keyboard.
+- Display hints, remaining lives, score, and guessed letters.
+- Hearts show the remaining lives.
+- Save game history to `game_history.txt`.
+- A command-line version for terminal use.
 
-## Yêu cầu
+## Requirements
 
-- Python 3.8 trở lên.
-- Tkinter, thường được cài sẵn cùng Python trên Windows.
-- Không cần cài thêm thư viện bên ngoài.
+- Python 3.8 or later.
+- Tkinter, which is usually included with Python on Windows.
+- No external libraries are required.
 
-## Cấu trúc dự án
+## Project Structure
 
 ```text
 Folder/
-├── cli_app.py                 # Phiên bản chạy trên terminal
-├── engine.py                  # Logic chính của trò chơi
-├── gui_app.py                 # Phiên bản giao diện đồ họa
-├── game_history.txt           # Lịch sử các ván chơi
+├── cli_app.py                 # Command-line version
+├── engine.py                  # Core game logic
+├── gui_app.py                 # Graphical interface version
+├── game_history.txt           # Game history
 ├── words/
-│   ├── easy.txt               # Danh sách từ dễ
-│   ├── medium.txt             # Danh sách từ trung bình
-│   └── hard.txt               # Danh sách từ khó
+│   ├── easy.txt               # Easy words
+│   ├── medium.txt             # Medium words
+│   └── hard.txt               # Hard words
 └── README.md
 ```
 
-## Cách chạy giao diện đồ họa
+## Running the Graphical Interface
 
-Mở terminal tại thư mục dự án và chạy:
+Open a terminal in the project folder and run:
 
 ```bash
 python gui_app.py
 ```
 
-Sau đó chọn độ khó. Khi game bắt đầu, bạn có thể click các nút chữ trên màn hình hoặc nhấn chữ cái trên bàn phím thật.
+Select a difficulty level. Once the game starts, you can click the on-screen letter buttons or press letters on the physical keyboard.
 
-## Cách chạy phiên bản CLI
+## Running the CLI Version
 
 ```bash
 python cli_app.py
 ```
 
-Trong CLI, nhập số tương ứng với độ khó và nhập từng chữ cái để đoán. Nhập `quit` trong khi chơi để thoát ván hiện tại.
+In the CLI, enter the number for your selected difficulty and then enter individual letters to guess. Enter `quit` during a game to exit the current round.
 
-## Định dạng file từ vựng
+## Word File Format
 
-Mỗi dòng trong các file thuộc thư mục `words/` phải có định dạng:
+Each line in the files inside the `words/` folder must use the following format:
 
 ```text
 WORD|Hint for the word
@@ -65,26 +65,26 @@ Ví dụ:
 APPLE|A red or green fruit
 ```
 
-Dấu `|` được dùng để phân cách từ và gợi ý. Từ và gợi ý không được để trống.
+The `|` character separates the word from its hint. Neither the word nor the hint can be empty.
 
-## Luật chơi
+## Game Rules
 
-- Mỗi ván có 6 mạng.
-- Đoán đúng sẽ mở các vị trí của chữ cái trong từ.
-- Đoán sai sẽ mất 1 mạng.
-- Mỗi chữ cái đúng được tính điểm dựa trên số lần xuất hiện trong từ.
-- Người chơi thắng khi đoán được toàn bộ chữ cái của từ.
-- Người chơi thua khi số mạng còn lại bằng 0.
+- Each round starts with 6 lives.
+- Correct guesses reveal the positions of the guessed letter in the word.
+- Incorrect guesses remove 1 life.
+- Correct letters earn points based on the number of times they appear in the word.
+- The player wins by guessing all the letters in the word.
+- The player loses when there are no lives remaining.
 
-## Lịch sử chơi
+## Game History
 
-Sau khi ván chơi kết thúc, kết quả được thêm vào `game_history.txt` theo định dạng:
+When a game ends, its result is appended to `game_history.txt` using the following format:
 
 ```text
 timestamp|difficulty|word|result|score|number_of_guesses
 ```
 
-## Tác giả
+## Author
 
 Truong Giang Nguyen  
 Student ID: 202572186
