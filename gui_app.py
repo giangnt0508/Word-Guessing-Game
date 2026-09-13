@@ -7,7 +7,7 @@ Description: Tkinter GUI interface for the Word Guessing Game
 """
 
 import tkinter as tk
-from tkinter import messagebox, ttk
+from tkinter import messagebox
 from engine import GameEngine
 import os
 from datetime import datetime
@@ -113,14 +113,18 @@ class WordGuessingGameGUI:
         # Lives display
         self.lives_frame = tk.Frame(self.main_frame, bg='#f0f0f0')
         self.lives_frame.pack(pady=5)
-        
-        self.lives_label = tk.Label(
-            self.lives_frame,
-            text="❤️❤️❤️❤️❤️❤️",
-            font=('Arial', 20),
-            bg='#f0f0f0'
-        )
-        self.lives_label.pack()
+
+        self.lives_labels = []
+        for _ in range(self.engine.max_lives):
+            life_label = tk.Label(
+                self.lives_frame,
+                text='♥',
+                font=('Segoe UI Symbol', 20),
+                fg='#e74c3c',
+                bg='#f0f0f0'
+            )
+            life_label.pack(side=tk.LEFT, padx=3)
+            self.lives_labels.append(life_label)
         
         # Guessed letters
         self.guessed_label = tk.Label(
@@ -272,7 +276,7 @@ class WordGuessingGameGUI:
             fg='white',
             width=15,
             pady=5,
-            command=self.root.destroy
+            command=selection.destroy
         ).pack(pady=10)
 
         self.center_window(selection)
@@ -356,8 +360,9 @@ class WordGuessingGameGUI:
         self.hint_label.config(text=f"Hint: {state['hint']}")
         
         # Update lives
-        lives = "❤️" * state['remaining_lives'] + "🖤" * (self.engine.max_lives - state['remaining_lives'])
-        self.lives_label.config(text=lives)
+        for index, life_label in enumerate(self.lives_labels):
+            color = '#e74c3c' if index < state['remaining_lives'] else '#2c3e50'
+            life_label.config(fg=color)
         
         # Update score
         self.score_label.config(text=f"Score: {state['score']}")
@@ -410,7 +415,6 @@ class WordGuessingGameGUI:
 
 
 def main():
-    """Main entry point for GUI application."""
     root = tk.Tk()
     app = WordGuessingGameGUI(root)
     root.mainloop()
