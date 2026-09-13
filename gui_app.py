@@ -25,6 +25,7 @@ class WordGuessingGameGUI:
         self.root.geometry("700x650")
         self.root.resizable(False, False)
         self.root.configure(bg='#f0f0f0')
+        self.center_window(self.root)
         
         self.engine = GameEngine()
         self.history_file = "game_history.txt"
@@ -35,7 +36,19 @@ class WordGuessingGameGUI:
             os.makedirs("words", exist_ok=True)
             
         self.create_widgets()
+        self.root.bind_all('<Key>', self.handle_keypress)
         self.show_difficulty_selection()
+
+    def center_window(self, window):
+        """Position a window in the center of the screen."""
+        window.update_idletasks()
+        width = window.winfo_width()
+        height = window.winfo_height()
+        screen_width = window.winfo_screenwidth()
+        screen_height = window.winfo_screenheight()
+        x = (screen_width - width) // 2
+        y = (screen_height - height) // 2
+        window.geometry(f"{width}x{height}+{x}+{y}")
         
     def create_widgets(self):
         """Create all GUI widgets."""
@@ -220,7 +233,7 @@ class WordGuessingGameGUI:
         # Create selection window
         selection = tk.Toplevel(self.root)
         selection.title("Select Difficulty")
-        selection.geometry("300x250")
+        selection.geometry("300x400")
         selection.resizable(False, False)
         selection.transient(self.root)
         selection.grab_set()
@@ -259,8 +272,10 @@ class WordGuessingGameGUI:
             fg='white',
             width=15,
             pady=5,
-            command=selection.destroy
+            command=self.root.destroy
         ).pack(pady=10)
+
+        self.center_window(selection)
         
     def start_new_game(self, difficulty, selection_window):
         """
@@ -319,6 +334,16 @@ class WordGuessingGameGUI:
             # Re-enable button if invalid (duplicate)
             if "already guessed" in message:
                 self.key_buttons[letter].config(state=tk.NORMAL, bg='#ecf0f1')
+
+    def handle_keypress(self, event):
+        """Handle a letter pressed on the physical keyboard."""
+        letter = event.char.upper()
+        if (
+            len(letter) == 1
+            and letter in self.key_buttons
+            and self.key_buttons[letter]['state'] == tk.NORMAL
+        ):
+            self.handle_guess(letter)
                 
     def update_display(self):
         """Update all display elements."""
