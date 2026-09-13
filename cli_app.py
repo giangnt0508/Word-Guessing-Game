@@ -37,13 +37,18 @@ class CLIApp:
         print(f"Hint: {state['hint']}")
         print(f"Lives Remaining: {'❤️' * state['remaining_lives']} ({state['remaining_lives']})")
         print(f"Score: {state['score']}")
-        print(f"Guessed Letters: {', '.join(sorted(state['guessed_letters'])) if state['guessed_letters'] else 'None'}")
+        print("Guessed Letters:", end=" ")
+        if state['guessed_letters']:
+            print(", ".join(sorted(state['guessed_letters'])))
+        else:
+            print("None")
+   
         print("----------------------------------------------------------")
         
     def select_difficulty(self) -> str:
         """ Let the user select a difficulty level. """
         while True:
-            print("\nSelect Difficulty:")
+            print("Select Difficulty:")
             print("  1. Easy")
             print("  2. Medium") 
             print("  3. Hard")
@@ -61,7 +66,7 @@ class CLIApp:
             elif choice == "3":
                 return "hard"
             else:
-                print("Invalid choice. Please select 1, 2, 3, or 4.")
+                print("Invalid choice! Please select 1, 2, 3, or 4.")
                 
     def play_game(self):
         """Main game loop."""
@@ -153,12 +158,9 @@ class CLIApp:
                 
             self.play_game()
             
-        except KeyboardInterrupt:
-            print("\n\nGame interrupted. Goodbye!")
-        except Exception as e:
-            print(f"\nAn unexpected error occurred: {e}")
+        except (KeyboardInterrupt, Exception) as e:
+            print(f"\nAn error occurred: {e}")
             input("Press Enter to exit...")
-
 
 if __name__ == "__main__":
     app = CLIApp()

@@ -62,7 +62,7 @@ class GameEngine:
             self.reset_game()
             return True
             
-        except (FileNotFoundError, IOError, IndexError, ValueError):
+        except Exception:
             return False
     
     def reset_game(self):
@@ -117,8 +117,16 @@ class GameEngine:
             # +10 for each time the guessed letter appears in the word
             matches = self.secret_word.count(guess)
             self.score += matches * 10
-            # Check if word is complete
-            if all(letter in self.guessed_letters for letter in self.secret_word):
+
+            word_completed = True # Check if word is complete
+
+            # Check each letter in the secret word
+            for letter in self.secret_word:
+                if letter not in self.guessed_letters:
+                    word_completed = False
+                    break
+
+            if word_completed:
                 self.game_over = True
                 self.game_won = True
                 return True, f"Congratulations! You won! The word was '{self.secret_word}'."
