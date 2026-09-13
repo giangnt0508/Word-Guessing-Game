@@ -14,10 +14,7 @@ from datetime import datetime
 
 
 class WordGuessingGameGUI:
-    """
-    Graphical User Interface for the Word Guessing Game using Tkinter.
-    """
-    
+
     def __init__(self, root):
         """Initialize the GUI application."""
         self.root = root
@@ -284,7 +281,6 @@ class WordGuessingGameGUI:
     def start_new_game(self, difficulty, selection_window):
         """
         Start a new game with the selected difficulty.
-        
         Args:
             difficulty (str): Selected difficulty
             selection_window: Difficulty selection window
@@ -311,7 +307,6 @@ class WordGuessingGameGUI:
     def handle_guess(self, letter):
         """
         Handle a letter guess from the keyboard.
-        
         Args:
             letter (str): Guessed letter
         """
@@ -371,13 +366,16 @@ class WordGuessingGameGUI:
         self.score_label.config(text=f"Score: {state['score']}")
         
         # Update guessed letters
-        guessed_text = "Guessed: " + ", ".join(sorted(state['guessed_letters'])) if state['guessed_letters'] else "Guessed: None"
+        if state['guessed_letters']:
+            guessed_text = "Guessed: " + ", ".join(state['guessed_letters'])
+        else:
+            guessed_text = "Guessed: None"
+
         self.guessed_label.config(text=guessed_text)
         
     def set_message(self, message, color='#2c3e50'):
-        """Set the message display."""
         self.message_label.config(text=message, fg=color)
-        
+
     def set_keyboard_state(self, enabled):
         """Enable or disable all keyboard buttons."""
         state = tk.NORMAL if enabled else tk.DISABLED
