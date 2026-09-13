@@ -87,12 +87,11 @@ class CLIApp:
                 input("\nPress Enter to try again...")
                 continue
 
+            self.clear_screen()
+            self.print_header()
+            self.print_game_state()
             # Game loop
             while not self.engine.game_over:
-                self.clear_screen()
-                self.print_header()
-                self.print_game_state()
-                
                 # Get user guess
                 guess = input("\nEnter a letter (or 'quit' to exit): ").strip()
                 
@@ -103,9 +102,14 @@ class CLIApp:
                 # Process guess
                 is_valid, message = self.engine.validate_guess(guess)
                 print(f"\n{message}")
-                
+
                 if is_valid:
                     input("\nPress Enter to continue...")
+                    self.clear_screen()
+                    self.print_header()
+                    self.print_game_state()
+                else:
+                    continue
             
             # Game ended - show results
             self.clear_screen()
