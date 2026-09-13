@@ -21,7 +21,7 @@
 ## Cấu trúc dự án
 
 ```text
-ICT401_Assessment3/
+Folder/
 ├── cli_app.py                 # Phiên bản chạy trên terminal
 ├── engine.py                  # Logic chính của trò chơi
 ├── gui_app.py                 # Phiên bản giao diện đồ họa
