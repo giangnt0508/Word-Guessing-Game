@@ -168,18 +168,6 @@ class WordGuessingGameGUI:
         )
         self.new_game_btn.pack(side=tk.LEFT, padx=10)
         
-        self.difficulty_btn = tk.Button(
-            self.control_frame,
-            text="Change Difficulty",
-            font=('Arial', 12),
-            bg='#2ecc71',
-            fg='white',
-            padx=20,
-            pady=8,
-            command=self.show_difficulty_selection
-        )
-        self.difficulty_btn.pack(side=tk.LEFT, padx=10)
-        
         self.quit_btn = tk.Button(
             self.control_frame,
             text="Quit",
