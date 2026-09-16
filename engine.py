@@ -7,7 +7,7 @@ Description: Core game logic engine
 """
 import random
 import os
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List
 
 
 class GameEngine:
@@ -86,29 +86,29 @@ class GameEngine:
                 display.append("_")
         return " ".join(display)
     
-    def validate_guess(self, guess: str) -> Tuple[bool, str]:
+    def validate_guess(self, guess: str) -> List:
         """
         Validate and process a letter guess
         Args: guess (str): The guessed letter
-        Returns: Tuple[bool, str]: (is_valid, message)
+        Returns: List: [is_valid, message]
         """
         if self.game_over:
-            return False, "Game is already over. Start a new game"
+            return [False, "Game is already over. Start a new game"]
             
         # Validate input
         if not guess:
-            return False, "Please enter a letter."
+            return [False, "Please enter a letter."]
             
         guess = guess.strip().upper()
         
         if len(guess) != 1:
-            return False, "Please enter a single letter."
+            return [False, "Please enter a single letter."]
             
         if not guess.isalpha():
-            return False, "Please enter a letter (A-Z)."
+            return [False, "Please enter a letter (A-Z)."]
             
         if guess in self.guessed_letters:
-            return False, f"You already guessed '{guess}'. Try another letter."
+            return [False, f"You already guessed '{guess}'. Try another letter."]
             
         # Process valid guess
         self.guessed_letters.append(guess)
@@ -129,16 +129,16 @@ class GameEngine:
             if word_completed:
                 self.game_over = True
                 self.game_won = True
-                return True, f"Congratulations! You won! The word was '{self.secret_word}'."
-            return True, f"Correct! '{guess}' appears {matches} time(s) in the word."
+                return [True, f"Congratulations! You won! The word was '{self.secret_word}'."]
+            return [True, f"Correct! '{guess}' appears {matches} time(s) in the word."]
         else:
             # Wrong guess
             self.remaining_lives -= 1
             if self.remaining_lives <= 0:
                 self.game_over = True
                 self.game_won = False
-                return True, f"Game Over! The word was '{self.secret_word}'. Better luck next time!"
-            return True, f"Wrong! '{guess}' is not in the word. {self.remaining_lives} lives remaining."
+                return [True, f"Game Over! The word was '{self.secret_word}'. Better luck next time!"]
+            return [True, f"Wrong! '{guess}' is not in the word. {self.remaining_lives} lives remaining."]
     
     def get_game_state(self) -> Dict:
         """ Get the current game state as a dictionary. """
